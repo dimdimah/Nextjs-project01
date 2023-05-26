@@ -1,17 +1,17 @@
 import React from "react";
 import Image from "next/image";
 
-const Item = () => (
+interface Itemprops {
+  icon?: string;
+  value?: string;
+  label?: string;
+}
+
+const Item = ({ icon = "", value = "value", label = "label" }: Itemprops) => (
   <div className="inline-flex gap-[9px] text-sm mb-1">
-    <Image
-      alt="icon"
-      src={"/img/project.png"}
-      width={15}
-      height={13}
-      className="rounded-full"
-    />
-    <span className="font-bold">125</span>
-    <span>Projek selesai</span>
+    <Image alt="icon" src={icon} width={18} height={18} />
+    <span className="font-bold">{value}</span>
+    <span>{label}</span>
   </div>
 );
 const cardBio = () => {
@@ -24,10 +24,10 @@ const cardBio = () => {
         height={90}
         className="rounded-full"
       />
-      <div className="flex flex-col">
-        <Item />
-        <Item />
-        <Item />
+      <div className="flex flex-col gap-2">
+        <Item icon="/img/project.png" value="125" label="Projek selesai" />
+        <Item icon="/img/github.png" value="5" label="Repository" />
+        <Item icon="/img/deal.png" value="5" label="Client" />
       </div>
     </div>
   );
